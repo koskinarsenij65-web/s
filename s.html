@@ -1,0 +1,1749 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Великие цитаты Джейсона Стэтхэма</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background: linear-gradient(135deg, #0f172a, #1e293b, #0f172a);
+            min-height: 100vh;
+            color: white;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        /* Добавляем декоративные элементы фона */
+        body::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image:
+                radial-gradient(circle at 10% 20%, rgba(59, 130, 246, 0.1) 0%, transparent 20%),
+                radial-gradient(circle at 90% 80%, rgba(16, 185, 129, 0.1) 0%, transparent 20%),
+                radial-gradient(circle at 50% 50%, rgba(139, 92, 246, 0.1) 0%, transparent 30%);
+            background-size: cover;
+            z-index: -2;
+        }
+
+        .background-elements {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        .floating-element {
+            position: absolute;
+            border-radius: 50%;
+            opacity: 0.1;
+            animation: float 15s infinite ease-in-out;
+        }
+
+        .floating-element:nth-child(1) {
+            width: 100px;
+            height: 100px;
+            background: #3b82f6;
+            top: 10%;
+            left: 5%;
+            animation-delay: 0s;
+        }
+
+        .floating-element:nth-child(2) {
+            width: 150px;
+            height: 150px;
+            background: #10b981;
+            top: 70%;
+            left: 85%;
+            animation-delay: -5s;
+        }
+
+        .floating-element:nth-child(3) {
+            width: 80px;
+            height: 80px;
+            background: #8b5cf6;
+            top: 40%;
+            left: 70%;
+            animation-delay: -10s;
+        }
+
+        .floating-element:nth-child(4) {
+            width: 120px;
+            height: 120px;
+            background: #f59e0b;
+            top: 20%;
+            left: 90%;
+            animation-delay: -7s;
+        }
+
+        .floating-element:nth-child(5) {
+            width: 60px;
+            height: 60px;
+            background: #ef4444;
+            top: 80%;
+            left: 15%;
+            animation-delay: -3s;
+        }
+
+        .geometric-shape {
+            position: absolute;
+            opacity: 0.05;
+            animation: rotate 20s infinite linear;
+        }
+
+        .geometric-shape:nth-child(6) {
+            width: 200px;
+            height: 200px;
+            border: 2px solid #3b82f6;
+            top: 30%;
+            left: 20%;
+            animation-duration: 25s;
+        }
+
+        .geometric-shape:nth-child(7) {
+            width: 180px;
+            height: 180px;
+            border: 2px solid #10b981;
+            top: 60%;
+            left: 60%;
+            transform: rotate(45deg);
+            animation-duration: 30s;
+        }
+
+        .geometric-shape:nth-child(8) {
+            width: 150px;
+            height: 150px;
+            border: 2px solid #8b5cf6;
+            top: 10%;
+            left: 80%;
+            transform: rotate(120deg);
+            animation-duration: 35s;
+        }
+
+        .grid-pattern {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image:
+                linear-gradient(rgba(59, 130, 246, 0.05) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(59, 130, 246, 0.05) 1px, transparent 1px);
+            background-size: 50px 50px;
+            opacity: 0.3;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(180deg); }
+        }
+
+        @keyframes rotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        .page {
+            display: none;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.3s ease;
+        }
+
+        .page.active {
+            display: block;
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: rgba(15, 23, 42, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 1rem;
+            border-bottom: 1px solid #334155;
+            z-index: 1000;
+        }
+
+        .nav-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 2rem;
+            font-weight: 700;
+            color: #60a5fa;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .logo:hover {
+            transform: scale(1.1);
+        }
+
+        .nav-buttons {
+            display: none;
+        }
+
+        .nav-buttons.show {
+            display: flex;
+            gap: 1.5rem;
+        }
+
+        .nav-button {
+            background: transparent;
+            border: none;
+            color: #cbd5e1;
+            padding: 0.5rem 1rem;
+            border-radius: 0.5rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: 500;
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        .nav-button:hover {
+            color: white;
+            background: #1e293b;
+            transform: scale(1.05);
+        }
+
+        .nav-button.active {
+            background: #3b82f6;
+            color: white;
+            box-shadow: 0 0 15px rgba(59, 130, 246, 0.25);
+        }
+
+        .hero {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+            background: linear-gradient(135deg, #0f172a, #1e293b);
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 10;
+            text-align: center;
+            padding: 0 1rem;
+            animation: fadeInDown 1s ease;
+        }
+
+        .hero-title {
+            font-size: 4rem;
+            font-weight: 700;
+            color: white;
+            margin-bottom: 2rem;
+            letter-spacing: 0.1em;
+            font-family: 'Montserrat', sans-serif;
+            text-shadow: 0 0 20px rgba(59, 130, 246, 0.5);
+        }
+
+        .quote-display {
+            background: rgba(30, 41, 59, 0.9);
+            backdrop-filter: blur(10px);
+            border-radius: 1rem;
+            padding: 2rem;
+            max-width: 60rem;
+            margin: 0 auto 3rem;
+            border: 1px solid #475569;
+            transition: all 0.3s ease;
+            min-height: 150px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .quote-display::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, #3b82f6, #10b981, #8b5cf6);
+        }
+
+        .quote-display:hover {
+            transform: scale(1.02);
+            border-color: #60a5fa;
+            box-shadow: 0 0 30px rgba(59, 130, 246, 0.3);
+        }
+
+        .quote-text {
+            font-size: 1.5rem;
+            color: #93c5fd;
+            font-style: italic;
+            line-height: 1.6;
+            text-align: center;
+            transition: all 0.5s ease;
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        .intro-text {
+            font-size: 1.2rem;
+            line-height: 1.8;
+            color: #cbd5e1;
+            max-width: 800px;
+            margin: 0 auto 3rem;
+            text-align: center;
+            font-family: 'Montserrat', sans-serif;
+            position: relative;
+        }
+
+        .intro-text::before,
+        .intro-text::after {
+            content: '"';
+            font-size: 2rem;
+            color: #3b82f6;
+            opacity: 0.3;
+            position: absolute;
+        }
+
+        .intro-text::before {
+            top: -20px;
+            left: -20px;
+        }
+
+        .intro-text::after {
+            bottom: -40px;
+            right: -20px;
+        }
+
+        .highlight {
+            color: #fbbf24;
+            font-weight: 600;
+            position: relative;
+        }
+
+        .highlight::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: #fbbf24;
+            opacity: 0.5;
+        }
+
+        .action-buttons {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 1rem;
+        }
+
+        .btn {
+            padding: 1rem 1.5rem;
+            border: none;
+            border-radius: 0.5rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 1rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            font-family: 'Montserrat', sans-serif;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: left 0.5s;
+        }
+
+        .btn:hover::before {
+            left: 100%;
+        }
+
+        .btn:hover {
+            transform: translateY(-2px) scale(1.05);
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .btn-blue {
+            background: #3b82f6;
+            color: white;
+        }
+
+        .btn-emerald {
+            background: #10b981;
+            color: white;
+        }
+
+        .btn-purple {
+            background: #8b5cf6;
+            color: white;
+        }
+
+        .page-content {
+            min-height: calc(100vh - 80px);
+            padding: 2rem;
+            animation: slideInUp 0.5s ease;
+            position: relative;
+        }
+
+        .page-content::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image:
+                radial-gradient(circle at 10% 90%, rgba(59, 130, 246, 0.05) 0%, transparent 20%),
+                radial-gradient(circle at 90% 10%, rgba(16, 185, 129, 0.05) 0%, transparent 20%);
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        .page-header {
+            text-align: center;
+            margin-bottom: 4rem; /* Увеличенный отступ снизу */
+            animation: fadeInDown 0.6s ease;
+            padding-top: 2rem; /* Добавлен отступ сверху */
+        }
+
+        .page-title {
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            font-family: 'Montserrat', sans-serif;
+            background: linear-gradient(45deg, #3b82f6, #10b981, #8b5cf6);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .page-subtitle {
+            color: #94a3b8;
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        .quotes-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .quote-card {
+            background: rgba(30, 41, 59, 0.9);
+            backdrop-filter: blur(10px);
+            border-radius: 1rem;
+            padding: 1.5rem;
+            border: 1px solid #475569;
+            transition: all 0.3s ease;
+            animation: fadeInUp 0.5s ease;
+            opacity: 0;
+            transform: translateY(20px);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .quote-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: linear-gradient(90deg, #3b82f6, #10b981);
+        }
+
+        .quote-card.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .quote-card:hover {
+            transform: scale(1.02);
+            border-color: #60a5fa;
+            box-shadow: 0 10px 25px rgba(59, 130, 246, 0.2);
+        }
+
+        .quote-icon {
+            width: 0.75rem;
+            height: 0.75rem;
+            background: #60a5fa;
+            border-radius: 50%;
+            margin-top: 0.75rem;
+            flex-shrink: 0;
+        }
+
+        .quote-content {
+            font-size: 1.25rem;
+            color: #93c5fd;
+            font-style: italic;
+            margin-left: 1rem;
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        .quote-date {
+            font-size: 0.875rem;
+            color: #94a3b8;
+            margin-top: 0.5rem;
+            text-align: right;
+            font-style: normal;
+            font-weight: 400;
+        }
+
+        .category-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .category-card {
+            background: linear-gradient(135deg, #1e293b, #1d4ed8);
+            border-radius: 1rem;
+            padding: 1.5rem;
+            cursor: pointer;
+            border: 1px solid #475569;
+            transition: all 0.3s ease;
+            animation: fadeInUp 0.5s ease;
+            opacity: 0;
+            transform: translateY(20px);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .category-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, #10b981, #8b5cf6);
+        }
+
+        .category-card:nth-child(1) { animation-delay: 0.1s; }
+        .category-card:nth-child(2) { animation-delay: 0.2s; }
+        .category-card:nth-child(3) { animation-delay: 0.3s; }
+        .category-card:nth-child(4) { animation-delay: 0.4s; }
+
+        .category-card.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .category-card:hover {
+            transform: scale(1.05);
+            border-color: #10b981;
+            box-shadow: 0 10px 30px rgba(16, 185, 129, 0.3);
+        }
+
+        .category-detail {
+            background: rgba(30, 41, 59, 0.9);
+            backdrop-filter: blur(10px);
+            border-radius: 1rem;
+            padding: 2rem;
+            border: 1px solid #475569;
+            margin-top: 2rem;
+            animation: fadeIn 0.5s ease;
+            opacity: 1;
+            transform: translateY(0);
+            position: relative;
+        }
+
+        .category-detail::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, #8b5cf6, #3b82f6);
+        }
+
+        .category-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1.5rem;
+        }
+
+        .quote-list {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .quote-item {
+            background: #334155;
+            border-radius: 0.5rem;
+            padding: 1rem;
+            border-left: 4px solid #10b981;
+            animation: fadeIn 0.3s ease;
+            opacity: 1;
+            transform: translateX(0);
+            position: relative;
+        }
+
+        .quote-item::before {
+            content: '"';
+            position: absolute;
+            top: 5px;
+            left: 10px;
+            font-size: 1.5rem;
+            color: #10b981;
+            opacity: 0.3;
+        }
+
+        .quote-item-text {
+            color: white;
+            font-style: italic;
+            font-family: 'Montserrat', sans-serif;
+            margin-left: 15px;
+        }
+
+        .quote-item-date {
+            font-size: 0.875rem;
+            color: #94a3b8;
+            margin-top: 0.5rem;
+            text-align: right;
+            font-style: normal;
+            font-weight: 400;
+        }
+
+        /* Стили для теста */
+        .test-container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: rgba(30, 41, 59, 0.9);
+            backdrop-filter: blur(10px);
+            border-radius: 1rem;
+            padding: 2rem;
+            border: 1px solid #475569;
+            position: relative;
+        }
+
+        .test-container::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, #3b82f6, #10b981);
+        }
+
+        .question {
+            margin-bottom: 2rem;
+            padding: 1.5rem;
+            background: rgba(30, 41, 59, 0.7);
+            border-radius: 0.5rem;
+            border-left: 4px solid #3b82f6;
+        }
+
+        .question-text {
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+            color: #cbd5e1;
+        }
+
+        .answer-options {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        .answer-option {
+            padding: 1rem;
+            background: #334155;
+            border-radius: 0.5rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            border: 2px solid transparent;
+        }
+
+        .answer-option:hover:not(.selected):not(.disabled) {
+            background: #3b4a62;
+            transform: translateX(5px);
+        }
+
+        .answer-option.selected {
+            background: #10b981;
+            border-color: #10b981;
+            transform: translateX(5px);
+        }
+
+        .answer-option.disabled {
+            background: #334155;
+            opacity: 0.6;
+            cursor: not-allowed;
+            pointer-events: none;
+        }
+
+        .answer-letter {
+            font-weight: bold;
+            color: #60a5fa;
+            min-width: 2rem;
+        }
+
+        .answer-option.selected .answer-letter {
+            color: white;
+        }
+
+        .answer-option.selected span {
+            color: white;
+        }
+
+        .test-result {
+            background: rgba(30, 41, 59, 0.9);
+            backdrop-filter: blur(10px);
+            border-radius: 1rem;
+            padding: 2rem;
+            border: 1px solid #475569;
+            margin-top: 2rem;
+            text-align: center;
+            display: none;
+        }
+
+        .result-title {
+            font-size: 2rem;
+            color: #10b981;
+            margin-bottom: 1rem;
+        }
+
+        .result-description {
+            font-size: 1.2rem;
+            line-height: 1.6;
+            color: #cbd5e1;
+            margin-bottom: 2rem;
+        }
+
+        .progress-bar {
+            width: 100%;
+            height: 8px;
+            background: #334155;
+            border-radius: 4px;
+            margin: 2rem 0;
+            overflow: hidden;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #3b82f6, #10b981);
+            width: 0%;
+            transition: width 0.5s ease;
+        }
+
+        .progress-text {
+            text-align: center;
+            color: #94a3b8;
+            margin-bottom: 2rem;
+        }
+
+        .restart-btn {
+            padding: 1rem 2rem;
+            background: #3b82f6;
+            color: white;
+            border: none;
+            border-radius: 0.5rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 1rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            font-family: 'Montserrat', sans-serif;
+            position: relative;
+            overflow: hidden;
+            display: inline-block;
+        }
+
+        .restart-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: left 0.5s;
+        }
+
+        .restart-btn:hover::before {
+            left: 100%;
+        }
+
+        .restart-btn:hover {
+            transform: translateY(-2px) scale(1.05);
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .footer {
+            background: #0f172a;
+            border-top: 1px solid #334155;
+            padding: 2rem;
+            margin-top: 4rem;
+            animation: fadeInUp 0.6s ease;
+            position: relative;
+        }
+
+        .footer::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: linear-gradient(90deg, #3b82f6, #10b981, #8b5cf6);
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .footer-text {
+            color: #94a3b8;
+            margin-bottom: 1rem;
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        .footer-copyright {
+            color: #64748b;
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        .animated-element {
+            position: absolute;
+            border: 2px solid;
+            border-radius: 50%;
+            animation: pulse 2s infinite;
+        }
+
+        .element-1 {
+            top: 2.5rem;
+            left: 2.5rem;
+            width: 5rem;
+            height: 5rem;
+            border-color: #60a5fa;
+            opacity: 0.6;
+        }
+
+        .element-2 {
+            bottom: 2.5rem;
+            right: 2.5rem;
+            width: 4rem;
+            height: 4rem;
+            border-color: #10b981;
+            opacity: 0.6;
+            animation: bounce 2s infinite;
+        }
+
+        /* Анимации */
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        @keyframes slideInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes pulse {
+            0% {
+                transform: scale(1);
+                opacity: 0.6;
+            }
+            50% {
+                transform: scale(1.1);
+                opacity: 0.8;
+            }
+            100% {
+                transform: scale(1);
+                opacity: 0.6;
+            }
+        }
+
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% {
+                transform: translateY(0);
+            }
+            40% {
+                transform: translateY(-20px);
+            }
+            60% {
+                transform: translateY(-10px);
+            }
+        }
+
+        @keyframes fadeOut {
+            from {
+                opacity: 1;
+                transform: translateX(0);
+            }
+            to {
+                opacity: 0;
+                transform: translateX(-20px);
+            }
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateX(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        .fade-out {
+            animation: fadeOut 0.5s ease forwards;
+        }
+
+        .fade-in {
+            animation: fadeIn 0.5s ease forwards;
+        }
+
+        @media (max-width: 768px) {
+            .hero-title {
+                font-size: 2.5rem;
+            }
+
+            .quote-text {
+                font-size: 1.25rem;
+            }
+
+            .page-title {
+                font-size: 2.5rem;
+            }
+
+            .intro-text {
+                font-size: 1rem;
+            }
+
+            .page-header {
+                margin-bottom: 3rem;
+                padding-top: 1rem;
+            }
+
+            .nav-buttons {
+                display: flex;
+                flex-direction: column;
+                gap: 0.5rem;
+            }
+
+            .action-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Декоративные элементы фона -->
+    <div class="background-elements">
+        <div class="floating-element"></div>
+        <div class="floating-element"></div>
+        <div class="floating-element"></div>
+        <div class="floating-element"></div>
+        <div class="floating-element"></div>
+        <div class="geometric-shape"></div>
+        <div class="geometric-shape"></div>
+        <div class="geometric-shape"></div>
+        <div class="grid-pattern"></div>
+    </div>
+
+    <nav class="nav">
+        <div class="nav-content">
+            <div class="logo" onclick="showPage('home')">СТЭТХЭМ</div>
+            <div class="nav-buttons show">
+                <button class="nav-button active" onclick="showPage('home')">Главная</button>
+                <button class="nav-button" onclick="showPage('quotes')">Цитаты</button>
+                <button class="nav-button" onclick="showPage('categories')">Категории</button>
+                <button class="nav-button" onclick="showPage('test')">Тест</button>
+            </div>
+        </div>
+    </nav>
+
+    <main>
+        <!-- Главная страница -->
+        <section id="home" class="page active">
+            <div class="hero">
+                <div class="animated-element element-1"></div>
+                <div class="animated-element element-2"></div>
+                <div class="hero-content">
+                    <h1 class="hero-title">СТЭТХЭМ</h1>
+                    <div class="quote-display">
+                        <p id="mainQuote" class="quote-text">"Тот, кто знает…Знает" (1204 г. н.э.)</p>
+                    </div>
+
+                    <div class="intro-text">
+                        Слушай сюда. Жизнь — штука суровая. Не всегда всё идёт по маслу.
+                        И иногда просто нужна <span class="highlight">конкретная мысль</span>,
+                        чтобы понять, как жить дальше.<br><br>
+                        И тогда на помощь приходит он — главный философ современности
+                        <span class="highlight">Джейсон Стетхэм</span> со своими цитатами.
+                    </div>
+
+                    <div class="action-buttons">
+                        <button class="btn btn-blue" onclick="showPage('quotes')">Великие Цитаты</button>
+                        <button class="btn btn-emerald" onclick="showPage('categories')">Категории</button>
+                        <button class="btn btn-purple" onclick="showPage('test')">Тест</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Страница цитат -->
+        <section id="quotes" class="page">
+            <div class="page-content">
+                <div class="page-header">
+                    <h2 class="page-title">Сборник Мудрости</h2>
+                </div>
+
+                <div class="quotes-grid" id="quotesGrid">
+                    <!-- Цитаты будут добавлены через JavaScript -->
+                </div>
+            </div>
+        </section>
+
+        <!-- Страница категорий -->
+        <section id="categories" class="page">
+            <div class="page-content">
+                <div class="page-header">
+                    <h2 class="page-title">Тир-листы цитат</h2>
+                </div>
+
+                <div class="category-grid" id="categoryGrid">
+                    <!-- Категории будут добавлены через JavaScript -->
+                </div>
+
+                <div id="categoryDetail" class="category-detail">
+                    <div class="category-header">
+                        <h3 id="detailTitle" class="page-title"></h3>
+                    </div>
+                    <div id="detailContent" class="quote-list"></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Страница теста -->
+        <section id="test" class="page">
+            <div class="page-content">
+                <div class="page-header">
+                    <h2 class="page-title">Тест: Какой ты Джейсон Стэтхэм сегодня?</h2>
+                </div>
+
+                <div class="test-container">
+                    <div class="progress-text">Прогресс: <span id="progressValue">0</span>/10</div>
+                    <div class="progress-bar">
+                        <div class="progress-fill" id="progressFill"></div>
+                    </div>
+
+                    <div class="question">
+                        <div class="question-text">1. Твои новые штаны для важной встречи оказались слегка тесноваты. Твои действия?</div>
+                        <div class="answer-options">
+                            <div class="answer-option" data-question="1" data-answer="A">
+                                <span class="answer-letter">A)</span>
+                                <span>Надену. Это же штаны для танцев, а они мне как раз-два-три, раз-два-три. Значит, так надо.</span>
+                            </div>
+                            <div class="answer-option" data-question="1" data-answer="B">
+                                <span class="answer-letter">B)</span>
+                                <span>Сниму, выпью пива для расслабления мышц, потом надену.</span>
+                            </div>
+                            <div class="answer-option" data-question="1" data-answer="C">
+                                <span class="answer-letter">C)</span>
+                                <span>Не мой размер — не моя проблема. Пойду в том, что удобно.</span>
+                            </div>
+                            <div class="answer-option" data-question="1" data-answer="D">
+                                <span class="answer-letter">D)</span>
+                                <span>Шаг влево, шаг вправо — это два шага. Значит, в них можно и расходиться.</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="question">
+                        <div class="question-text">2. Тебе сказали: «Тут — это вам не там!». Ты:</div>
+                        <div class="answer-options">
+                            <div class="answer-option" data-question="2" data-answer="A">
+                                <span class="answer-letter">A)</span>
+                                <span>Спокойно отвечу: «И хорошо. Там света не было».</span>
+                            </div>
+                            <div class="answer-option" data-question="2" data-answer="B">
+                                <span class="answer-letter">B)</span>
+                                <span>Ухмыльнусь: «Зато там пиво дешевле».</span>
+                            </div>
+                            <div class="answer-option" data-question="2" data-answer="C">
+                                <span class="answer-letter">C)</span>
+                                <span>Резко повернусь: «А где тут? Покажи».</span>
+                            </div>
+                            <div class="answer-option" data-question="2" data-answer="D">
+                                <span class="answer-letter">D)</span>
+                                <span>Философски изреку: «Тут — это вам не там, но и там — это не везде».</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="question">
+                        <div class="question-text">3. Как ты планируешь свой рабочий день?</div>
+                        <div class="answer-options">
+                            <div class="answer-option" data-question="3" data-answer="A">
+                                <span class="answer-letter">A)</span>
+                                <span>Делу время, а потехе час, пиво, водочка и квас. Всему своё время.</span>
+                            </div>
+                            <div class="answer-option" data-question="3" data-answer="B">
+                                <span class="answer-letter">B)</span>
+                                <span>Главное — успеть на первую встречу. На первый урок можно и опоздать, ведь учиться никогда не поздно.</span>
+                            </div>
+                            <div class="answer-option" data-question="3" data-answer="C">
+                                <span class="answer-letter">C)</span>
+                                <span>Составлю четкий план. Если пацан сказал, что сделает к пяти, значит, сделает к пяти.</span>
+                            </div>
+                            <div class="answer-option" data-question="3" data-answer="D">
+                                <span class="answer-letter">D)</span>
+                                <span>Никогда не откладываю на завтра то, на что можно забить сегодня.</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="question">
+                        <div class="question-text">4. Твоя тактика в споре:</div>
+                        <div class="answer-options">
+                            <div class="answer-option" data-question="4" data-answer="A">
+                                <span class="answer-letter">A)</span>
+                                <span>Молчу, коплю аргументы. Немой херни не скажет.</span>
+                            </div>
+                            <div class="answer-option" data-question="4" data-answer="B">
+                                <span class="answer-letter">B)</span>
+                                <span>Переведу всё в шутку. Говоришь на меня — переводишь на себя.</span>
+                            </div>
+                            <div class="answer-option" data-question="4" data-answer="C">
+                                <span class="answer-letter">C)</span>
+                                <span>Буду краток и дам понять, кто тут прав. А если точнее — кто тут лев.</span>
+                            </div>
+                            <div class="answer-option" data-question="4" data-answer="D">
+                                <span class="answer-letter">D)</span>
+                                <span>Буду терпеть, терпеть, а потом как терпеть, терпеть. Пока не надоест.</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="question">
+                        <div class="question-text">5. К тебе пристали с несправедливыми обвинениями. Твоя реакция?</div>
+                        <div class="answer-options">
+                            <div class="answer-option" data-question="5" data-answer="A">
+                                <span class="answer-letter">A)</span>
+                                <span>Если меня незаслуженно обидели, вернусь и заслужу. Докажу, что я прав.</span>
+                            </div>
+                            <div class="answer-option" data-question="5" data-answer="B">
+                                <span class="answer-letter">B)</span>
+                                <span>Презрительно усмехнусь. Пока не доказано, не волнует, что сказано.</span>
+                            </div>
+                            <div class="answer-option" data-question="5" data-answer="C">
+                                <span class="answer-letter">C)</span>
+                                <span>Быстро и жёстко пресеку. Остановку знаешь? Я остановил.</span>
+                            </div>
+                            <div class="answer-option" data-question="5" data-answer="D">
+                                <span class="answer-letter">D)</span>
+                                <span>Запомню, а то забуду. И учту в будущем.</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="question">
+                        <div class="question-text">6. Что для тебя высшая мудрость?</div>
+                        <div class="answer-options">
+                            <div class="answer-option" data-question="6" data-answer="A">
+                                <span class="answer-letter">A)</span>
+                                <span>Хозяйство вести — не мудями трясти. Делай дело без суеты.</span>
+                            </div>
+                            <div class="answer-option" data-question="6" data-answer="B">
+                                <span class="answer-letter">B)</span>
+                                <span>Если жизнь — это вызов, то я перезвоню. Не сейчас.</span>
+                            </div>
+                            <div class="answer-option" data-question="6" data-answer="C">
+                                <span class="answer-letter">C)</span>
+                                <span>Работа не волк. Работа — это ворк, а волк — это ходить. То есть действовать.</span>
+                            </div>
+                            <div class="answer-option" data-question="6" data-answer="D">
+                                <span class="answer-letter">D)</span>
+                                <span>Чем больше шкаф — тем он больше, чем меньше шкаф — тем больше он тумбочка. Это надо принять.</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="question">
+                        <div class="question-text">7. Твоя жизненная позиция в отношениях:</div>
+                        <div class="answer-options">
+                            <div class="answer-option" data-question="7" data-answer="A">
+                                <span class="answer-letter">A)</span>
+                                <span>Сначала комплименты, потом платишь алименты. Я реалист.</span>
+                            </div>
+                            <div class="answer-option" data-question="7" data-answer="B">
+                                <span class="answer-letter">B)</span>
+                                <span>Если я вдруг стану тебе нужен, то я там же, где и был, когда был не нужен. Ничего не изменилось.</span>
+                            </div>
+                            <div class="answer-option" data-question="7" data-answer="C">
+                                <span class="answer-letter">C)</span>
+                                <span>Ты живёшь как карта ляжет, я живу как мама скажет. Шучу. Я сам всё решаю.</span>
+                            </div>
+                            <div class="answer-option" data-question="7" data-answer="D">
+                                <span class="answer-letter">D)</span>
+                                <span>Тимон — не Пумба. Шкаф — не тумба. Всё и все — уникальны, не надо обобщать.</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="question">
+                        <div class="question-text">8. Ты чувствуешь приближение простуды. Твои меры:</div>
+                        <div class="answer-options">
+                            <div class="answer-option" data-question="8" data-answer="A">
+                                <span class="answer-letter">A)</span>
+                                <span>Не болейте раком, болейте стоя. Буду работать, пока не свалюсь.</span>
+                            </div>
+                            <div class="answer-option" data-question="8" data-answer="B">
+                                <span class="answer-letter">B)</span>
+                                <span>Лучше выпить литр пива (с мёдом), чем не выпить литр пива. Народная медицина.</span>
+                            </div>
+                            <div class="answer-option" data-question="8" data-answer="C">
+                                <span class="answer-letter">C)</span>
+                                <span>Почесал яйца, понюхал руку. Самодиагностика. Если ничего не понял — значит, здоров.</span>
+                            </div>
+                            <div class="answer-option" data-question="8" data-answer="D">
+                                <span class="answer-letter">D)</span>
+                                <span>Завтра рано вставать, встану послезавтра. Организму нужен отдых.</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="question">
+                        <div class="question-text">9. Как ты принимаешь сложные решения?</div>
+                        <div class="answer-options">
+                            <div class="answer-option" data-question="9" data-answer="A">
+                                <span class="answer-letter">A)</span>
+                                <span>Если за двумя зайцами погонишься, то не выловить тебе рыбку из пруда. Нужно выбрать одну цель.</span>
+                            </div>
+                            <div class="answer-option" data-question="9" data-answer="B">
+                                <span class="answer-letter">B)</span>
+                                <span>Вы имеете право, но не имеете лево. Значит, поверну направо.</span>
+                            </div>
+                            <div class="answer-option" data-question="9" data-answer="C">
+                                <span class="answer-letter">C)</span>
+                                <span>Просто сделаю. Одна ошибка — и ты ошибся. Не ошибешься — не проживешь.</span>
+                            </div>
+                            <div class="answer-option" data-question="9" data-answer="D">
+                                <span class="answer-letter">D)</span>
+                                <span>Хочу эчпочмак. Пойду есть. Решения лучше принимать на сытый желудок.</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="question">
+                        <div class="question-text">10. Твоё кредо на сегодня:</div>
+                        <div class="answer-options">
+                            <div class="answer-option" data-question="10" data-answer="A">
+                                <span class="answer-letter">A)</span>
+                                <span>Тот, кто знает… Знает. И всё.</span>
+                            </div>
+                            <div class="answer-option" data-question="10" data-answer="B">
+                                <span class="answer-letter">B)</span>
+                                <span>Льва Толстого знаешь? Я откормил. То есть я создатель своих обстоятельств.</span>
+                            </div>
+                            <div class="answer-option" data-question="10" data-answer="C">
+                                <span class="answer-letter">C)</span>
+                                <span>Топлёное молоко знаешь? Я утопил. Я решаю судьбы вещей.</span>
+                            </div>
+                            <div class="answer-option" data-question="10" data-answer="D">
+                                <span class="answer-letter">D)</span>
+                                <span>Не спеши, а то успеешь. Всему своё время.</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="testResult" class="test-result">
+                        <h3 class="result-title" id="resultTitle">Результат</h3>
+                        <p class="result-description" id="resultDescription"></p>
+                        <button class="restart-btn" onclick="restartTest()">Пройти тест снова</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <p class="footer-text">Сборник цитат Джейсона Стэтхэма</p>
+            <div class="footer-copyright">© 2026 Стэтхэмские цитаты</div>
+        </div>
+    </footer>
+
+    <script>
+        // Список цитат с датами создания, отсортированные по возрастанию года
+        const quotesWithDates = [
+            { quote: "Жи-ши пиши от души", date: "44 г. до н.э." },
+            { quote: "Шкаф – не тумба. Тимон – не Пумба", date: "33 г. до н.э." },
+            { quote: "Если пацан сказал, то сделал, если не сделал, значит, пошутил", date: "12 г. до н.э." },
+            { quote: "Если тебя незаслужено обидели, вернись и заслужи", date: "1204 г. н.э." },
+            { quote: "Тот, кто знает…Знает", date: "1215 г. н.э." },
+            { quote: "Немой херни не скажет", date: "1279 г. н.э." },
+            { quote: "Если за двумя зайцами погонишься, то не выловить тебе рыбку из пруда", date: "1285 г. н.э." },
+            { quote: "Чем больше шкаф - тем он больше, чем меньше шкаф - тем больше он тумбочка", date: "1347 г. н.э." },
+            { quote: "Если тебя незаслужено обидели, вернись и заслужи", date: "1348 г. н.э." },
+            { quote: "Почесал яйца, понюхал руку", date: "1378 г. н.э." },
+            { quote: "Не бойся, когда ты один, – бойся, когда ты два", date: "1415 г. н.э." },
+            { quote: "Купил мужик штаны для танцев, а они ему как раз-два-три, раз-два-три", date: "1453 г. н.э." },
+            { quote: "Если я вдруг стану тебе нужен, то я там же, где и был, когда был не нужен", date: "1455 г. н.э." },
+            { quote: "Не важно, кто прав, важно, кто лев", date: "1474 г. н.э." },
+            { quote: "Ты живешь как карта ляжет, я живу как мама скажет", date: "1492 г. н.э." },
+            { quote: "Работа не волк. Работа – это ворк, а волк – это ходить", date: "1503 г. н.э." },
+            { quote: "Тут – это вам не там", date: "1517 г. н.э." },
+            { quote: "Сначала комплименты, потом платишь алименты", date: "1526 г. н.э." },
+            { quote: "Шаг влево, шаг вправо – это два шага", date: "1565 г. н.э." },
+            { quote: "Лучше выпить литр пива, чем не выпить литр пива", date: "1571 г. н.э." },
+            { quote: "Хозяйство вести – не мудями трясти", date: "1620 г. н.э." },
+            { quote: "Запомните, а то забудете", date: "1648 г. н.э." },
+            { quote: "Хочу Эчпочмак", date: "1683 г. н.э." },
+            { quote: "Делу время, а потехе час, пиво, водочка и квас", date: "1701 г. н.э." },
+            { quote: "Ты живешь как карта ляжет, я живу как мама скажет", date: "1756 г. н.э." },
+            { quote: "Завтра рано вставать, встану послезавтра", date: "1776 г. н.э." },
+            { quote: "На первый урок можно и опоздать, ведь учиться никогда не поздно", date: "1789 г. н.э." },
+            { quote: "Шаг влево, шаг вправо – это два шага", date: "1805 г. н.э." },
+            { quote: "Не болейте раком, Болейте стоя", date: "1812 г. н.э." },
+            { quote: "Топленое молоко знаешь? Я утопил", date: "1828 г. н.э." },
+            { quote: "Льва Толстого знаешь? Я откормил", date: "1861 г. н.э." },
+            { quote: "Если жизнь – это вызов, то я перезвоню", date: "1863 г. н.э." },
+            { quote: "Не спеши, а то успеешь", date: "1881 г. н.э." },
+            { quote: "Вы имеете право, но не имеете лево", date: "1889 г. н.э." },
+            { quote: "Если б море было водкой, я бы стал подводной лодкой", date: "1903 г. н.э." },
+            { quote: "Пока не доказано, не волнует, что сказано", date: "1914 г. н.э." },
+            { quote: "Говоришь на меня – переводишь на себя", date: "1917 г. н.э." },
+            { quote: "Остановку знаешь? Я остановил", date: "1918 г. н.э." },
+            { quote: "Слабый мужчина ищет оправдания, а настоящий мужик их заранее подготовил", date: "1939 г. н.э." },
+            { quote: "Запомни, одна ошибка – и ты ошибся", date: "1945 г. н.э." },
+            { quote: "Если я вдруг стану тебе нужен, то я там же, где и был, когда был не нужен", date: "1962 г. н.э." },
+            { quote: "Если я вдруг стану тебе нужен, то я там же, где и был, когда был не нужен", date: "1969 г. н.э." },
+            { quote: "Я такой человек, который терпит, терпит, а потом как терпит, терпи", date: "1989 г. н.э." },
+            { quote: "Никогда не откладывай на завтра то, на что можно забить сегодня", date: "2026 г. н.э." }
+        ];
+
+        // Категории цитат
+        const quoteCategories = {
+            best: [
+                { quote: "Тот, кто знает…Знает", date: "1215 г. н.э." },
+                { quote: "Немой херни не скажет", date: "1279 г. н.э." },
+                { quote: "Жи-ши пиши от души", date: "44 г. до н.э." },
+                { quote: "Почесал яйца, понюхал руку", date: "1378 г. н.э." },
+                { quote: "Хочу Эчпочмак", date: "1683 г. н.э." }
+            ],
+            daily: [
+                { quote: "Если тебя незаслужено обидели, вернись и заслужи", date: "1204 г. н.э." },
+                { quote: "Работа не волк. Работа – это ворк, а волк – это ходить", date: "1503 г. н.э." },
+                { quote: "Лучше выпить литр пива, чем не выпить литр пива", date: "1571 г. н.э." },
+                { quote: "Сначала комплименты, потом платишь алименты", date: "1526 г. н.э." },
+                { quote: "Делу время, а потехе час, пиво, водочка и квас", date: "1701 г. н.э." }
+            ],
+            life: [
+                { quote: "Если жизнь – это вызов, то я перезвоню", date: "1863 г. н.э." },
+                { quote: "Не болейте раком, Болейте стоя", date: "1812 г. н.э." },
+                { quote: "Вы имеете право, но не имеете лево", date: "1889 г. н.э." },
+                { quote: "Если я вдруг стану тебе нужен, то я там же, где и был, когда был не нужен", date: "1962 г. н.э." },
+                { quote: "Шаг влево, шаг вправо – это два шага", date: "1756 г. н.э." }
+            ],
+            shocking: [
+                { quote: "Почесал яйца, понюхал руку", date: "1378 г. н.э." },
+                { quote: "Если за двумя зайцами погонишься, то не выловить тебе рыбку из пруда", date: "1285 г. н.э." },
+                { quote: "Шкаф – не тумба. Тимон – не Пумба", date: "33 г. до н.э." },
+                { quote: "Льва Толстого знаешь? Я откормил", date: "1828 г. н.э." },
+                { quote: "Если б море было водкой, я бы стал подводной лодкой", date: "1903 г. н.э." }
+            ]
+        };
+
+        let currentQuoteIndex = 0;
+        let quoteInterval;
+
+        // Функция смены цитаты
+        function changeQuote() {
+            const quoteElement = document.getElementById('mainQuote');
+
+            // Добавляем анимацию исчезновения
+            quoteElement.classList.add('fade-out');
+
+            setTimeout(() => {
+                currentQuoteIndex = (currentQuoteIndex + 1) % quotesWithDates.length;
+                quoteElement.textContent = `"${quotesWithDates[currentQuoteIndex].quote}" (${quotesWithDates[currentQuoteIndex].date})`;
+
+                // Добавляем анимацию появления
+                quoteElement.classList.remove('fade-out');
+                quoteElement.classList.add('fade-in');
+
+                setTimeout(() => {
+                    quoteElement.classList.remove('fade-in');
+                }, 500);
+            }, 250);
+        }
+
+        // Начинаем смену цитат каждые 10 секунд
+        function startQuoteRotation() {
+            quoteInterval = setInterval(changeQuote, 10000);
+        }
+
+        // Останавливаем смену цитат (например, при переходе на другую страницу)
+        function stopQuoteRotation() {
+            if (quoteInterval) {
+                clearInterval(quoteInterval);
+            }
+        }
+
+        // Функция переключения страниц
+        function showPage(pageId) {
+            // Останавливаем смену цитат на главной странице
+            if (document.querySelector('#home.page.active')) {
+                stopQuoteRotation();
+            }
+
+            // Скрываем все страницы
+            document.querySelectorAll('.page').forEach(page => {
+                page.classList.remove('active');
+            });
+
+            // Добавляем анимацию выхода для текущей страницы
+            setTimeout(() => {
+                // Показываем новую страницу
+                document.getElementById(pageId).classList.add('active');
+
+                // Загружаем контент для страницы
+                if (pageId === 'quotes') {
+                    loadQuotes();
+                } else if (pageId === 'categories') {
+                    loadCategories();
+                }
+
+                // Анимируем элементы на странице
+                animateElementsOnPage(pageId);
+
+                // Если возвращаемся на главную, запускаем смену цитат
+                if (pageId === 'home') {
+                    startQuoteRotation();
+                }
+            }, 150);
+
+            // Обновляем активную кнопку навигации
+            document.querySelectorAll('.nav-button').forEach(button => {
+                button.classList.remove('active');
+            });
+            event.target.classList.add('active');
+        }
+
+        // Анимация элементов на странице
+        function animateElementsOnPage(pageId) {
+            setTimeout(() => {
+                if (pageId === 'quotes') {
+                    document.querySelectorAll('.quote-card').forEach((card, index) => {
+                        setTimeout(() => {
+                            card.classList.add('visible');
+                        }, index * 50);
+                    });
+                } else if (pageId === 'categories') {
+                    document.querySelectorAll('.category-card').forEach((card, index) => {
+                        setTimeout(() => {
+                            card.classList.add('visible');
+                        }, index * 100);
+                    });
+                }
+            }, 100);
+        }
+
+        // Загрузка цитат
+        function loadQuotes() {
+            const container = document.getElementById('quotesGrid');
+            container.innerHTML = '';
+
+            quotesWithDates.forEach((item, index) => {
+                const card = document.createElement('div');
+                card.className = 'quote-card';
+                card.innerHTML = `
+                    <div style="display: flex; flex-direction: column;">
+                        <div style="display: flex; align-items: flex-start; gap: 1rem;">
+                            <div class="quote-icon"></div>
+                            <p class="quote-content">"${item.quote}"</p>
+                        </div>
+                        <div class="quote-date">${item.date}</div>
+                    </div>
+                `;
+                container.appendChild(card);
+            });
+        }
+
+        // Загрузка категорий
+        function loadCategories() {
+            const container = document.getElementById('categoryGrid');
+            container.innerHTML = '';
+
+            const categories = {
+                best: "Лучшие фразы",
+                daily: "Фразы для повседневного использования",
+                life: "Самые жизненные фразы",
+                shocking: "Ошеломляющие фразы"
+            };
+
+            Object.entries(categories).forEach(([key, title]) => {
+                const card = document.createElement('div');
+                card.className = 'category-card';
+                card.innerHTML = `
+                    <h3 class="category-title">${title}</h3>
+                    <p class="category-count">${quoteCategories[key].length} цитат</p>
+                `;
+                card.addEventListener('click', () => showCategoryDetail(key));
+                container.appendChild(card);
+            });
+        }
+
+        // Показ деталей категории
+        function showCategoryDetail(categoryKey) {
+            const detailContainer = document.getElementById('categoryDetail');
+            const titleElement = document.getElementById('detailTitle');
+            const contentElement = document.getElementById('detailContent');
+
+            const categoryNames = {
+                best: "Лучшие фразы",
+                daily: "Фразы для повседневного использования",
+                life: "Самые жизненные фразы",
+                shocking: "Ошеломляющие фразы"
+            };
+
+            titleElement.textContent = categoryNames[categoryKey];
+
+            contentElement.innerHTML = '';
+            quoteCategories[categoryKey].forEach((item, index) => {
+                const quoteItem = document.createElement('div');
+                quoteItem.className = 'quote-item';
+                quoteItem.innerHTML = `
+                    <p class="quote-item-text">"${item.quote}"</p>
+                    <div class="quote-item-date">${item.date}</div>
+                `;
+                contentElement.appendChild(quoteItem);
+            });
+        }
+
+        // Состояние теста
+        const testState = {
+            answers: {},
+            answeredQuestions: new Set()
+        };
+
+        // Обработчик клика на ответ
+        document.querySelectorAll('.answer-option').forEach(option => {
+            option.addEventListener('click', function() {
+                const question = this.getAttribute('data-question');
+                const answer = this.getAttribute('data-answer');
+
+                // Проверяем, был ли уже выбран ответ на этот вопрос
+                if (testState.answeredQuestions.has(question)) {
+                    return; // Если уже ответили, не делаем ничего
+                }
+
+                // Помечаем, что на этот вопрос уже ответили
+                testState.answeredQuestions.add(question);
+                testState.answers[question] = answer;
+
+                // Выделяем выбранный вариант
+                this.classList.add('selected');
+
+                // Отключаем остальные варианты в этом вопросе
+                const siblings = this.parentElement.querySelectorAll('.answer-option');
+                siblings.forEach(sibling => {
+                    if (sibling !== this) {
+                        sibling.classList.add('disabled');
+                    }
+                });
+
+                // Обновляем прогресс
+                updateProgress();
+
+                // Проверяем, все ли вопросы отвечены
+                if (testState.answeredQuestions.size === 10) {
+                    setTimeout(calculateResult, 500);
+                }
+            });
+        });
+
+        // Обновление прогресса
+        function updateProgress() {
+            const progressValue = testState.answeredQuestions.size;
+            document.getElementById('progressValue').textContent = progressValue;
+            document.getElementById('progressFill').style.width = `${(progressValue / 10) * 100}%`;
+        }
+
+        // Расчет результата теста
+        function calculateResult() {
+            const resultCounts = {
+                A: 0,
+                B: 0,
+                C: 0,
+                D: 0
+            };
+
+            for (const question in testState.answers) {
+                const answer = testState.answers[question];
+                resultCounts[answer]++;
+            }
+
+            let maxCount = 0;
+            let resultType = 'A';
+
+            for (const type in resultCounts) {
+                if (resultCounts[type] > maxCount) {
+                    maxCount = resultCounts[type];
+                    resultType = type;
+                }
+            }
+
+            let resultTitle, resultDescription;
+
+            if (resultType === 'A') {
+                resultTitle = 'Честный механик / Водитель';
+                resultDescription = 'Ты — надежная опора. Ты не бросаешь слов на ветер, работаешь на совесть и предпочитаешь простые, но эффективные решения. Тебя уважают за дело, а не за пустую болтовню. Твой гараж (или офис) — твоя крепость.';
+            } else if (resultType === 'B') {
+                resultTitle = 'Гонщик / Игрок';
+                resultDescription = 'Ты обаятельный циник с отличным чувством юмора. Ты любишь адреналин, хорошую компанию и не паришься по пустякам. Жизнь для тебя — игра, иногда опасная, но всегда интересная. Ты мастерски уходишь от проблем и находишь выходы из любых передряг с улыбкой.';
+            } else if (resultType === 'C') {
+                resultTitle = 'Наёмник / Экспроприатор';
+                resultDescription = 'Ты — человек действия. Минимум слов, максимум эффективности. Тебя сложно вывести из себя, но если это произошло — мало никому не покажется. Ты прямолинеен, точен и немного пугающе предсказуем в своей непредсказуемости. Тебя нанимают для сложной работы.';
+            } else {
+                resultTitle = 'Философ с кулаками';
+                resultDescription = 'Ты видишь мир иначе. За твоей суровой внешностью скрывается глубокая, парадоксальная и абсурдная картина мира. Ты можешь решить проблему одним метким афоризмом, а можешь — одним метким ударом. Ты загадка, обёрнутая в кожаную куртку. Ты знаешь, что шкаф — не тумба.';
+            }
+
+            document.getElementById('resultTitle').textContent = resultTitle;
+            document.getElementById('resultDescription').textContent = resultDescription;
+            document.getElementById('testResult').style.display = 'block';
+        }
+
+        // Перезапуск теста
+        function restartTest() {
+            // Сбрасываем состояние теста
+            testState.answers = {};
+            testState.answeredQuestions.clear();
+
+            // Сбрасываем прогресс
+            document.getElementById('progressValue').textContent = '0';
+            document.getElementById('progressFill').style.width = '0%';
+
+            // Сбрасываем все ответы
+            document.querySelectorAll('.answer-option').forEach(option => {
+                option.classList.remove('selected', 'disabled');
+                option.style.pointerEvents = 'auto';
+                option.style.opacity = '1';
+            });
+
+            // Скрываем результат
+            document.getElementById('testResult').style.display = 'none';
+        }
+
+        // Инициализация
+        document.addEventListener('DOMContentLoaded', function() {
+            loadQuotes();
+            loadCategories();
+
+            // Анимация элементов на главной странице
+            document.querySelectorAll('.quote-card, .category-card').forEach((element, index) => {
+                setTimeout(() => {
+                    element.classList.add('visible');
+                }, index * 100);
+            });
+
+            // Запускаем смену цитат на главной странице
+            startQuoteRotation();
+        });
+
+        // Анимации при наведении
+        document.querySelectorAll('.btn').forEach(button => {
+            button.addEventListener('mouseenter', function() {
+                this.style.transform = 'translateY(-2px) scale(1.05)';
+            });
+
+            button.addEventListener('mouseleave', function() {
+                this.style.transform = 'translateY(0) scale(1)';
+            });
+        });
+
+        // Анимации карточек
+        document.querySelectorAll('.quote-card, .category-card').forEach(card => {
+            card.addEventListener('mouseenter', function() {
+                this.style.transform = 'scale(1.02)';
+            });
+
+            card.addEventListener('mouseleave', function() {
+                this.style.transform = 'scale(1)';
+            });
+        });
+    </script>
+</body>
+</html>
